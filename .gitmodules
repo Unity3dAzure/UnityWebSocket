@@ -1,3 +1,0 @@
-[submodule "websocket-sharp"]
-	path = Dependencies/websocket-sharp
-	url = https://github.com/deadlyfingers/websocket-sharp

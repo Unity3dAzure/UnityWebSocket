@@ -3,17 +3,10 @@
 For Unity developers looking to use Web Sockets in their Unity game / app.
 
 ## External dependencies
+
 **First download the required dependencies and extract the contents into your Unity project "Assets" folder.**
-- [WebSocket-Sharp](https://github.com/sta/websocket-sharp)
 
-## :octocat: Download instructions
-This project contains git submodule dependencies so use:
-
-    `git clone --recursive https://github.com/Unity3dAzure/UnityWebSocket.git`
-
-Or if you've already done a git clone then use:
-
-    `git submodule update --init --recursive`
+* [WebSocket-Sharp](https://github.com/deadlyfingers/websocket-sharp)
 
 ## Developer notes
 

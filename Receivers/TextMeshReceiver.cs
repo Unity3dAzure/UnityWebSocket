@@ -4,28 +4,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityWebSocket {
-  // Drop this script onto a TextMesh gameobject to make it update
+namespace Unity3dAzure.WebSockets {
+  // Updates TextMesh component text with received data
+  [RequireComponent (typeof (TextMesh))]
   public class TextMeshReceiver : DataReceiver {
 
-    private string text;
-    private TextMesh textMesh;
-    private bool needsUpdated = false;
+    protected string text;
+    protected bool needsUpdated = false;
 
-    void Awake() {
-      textMesh = gameObject.GetComponent<TextMesh>();
+    private TextMesh textMesh;
+
+    void Awake () {
+      textMesh = gameObject.GetComponent<TextMesh> ();
     }
 
-    void Update() {
-      // update any text components on this gameobject
-      if (textMesh != null) {
-        textMesh.text = text;
-        needsUpdated = false;
+    void Update () {
+      if (!needsUpdated) {
+        return;
       }
+      // update TextMesh component on this gameObject
+      textMesh.text = text;
+      needsUpdated = false;
     }
 
     // Override this method in your own subclass to process the received event data
-    override public void OnReceivedData(object sender, EventArgs args) {
+    override public void OnReceivedData (object sender, EventArgs args) {
       if (args == null) {
         return;
       }

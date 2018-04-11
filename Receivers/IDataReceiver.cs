@@ -1,7 +1,7 @@
 using System;
 
-namespace UnityWebSocket {
+namespace Unity3dAzure.WebSockets {
   public interface IDataReceiver {
-    void OnReceivedData(object sender, EventArgs args);
+    void OnReceivedData (object sender, EventArgs args);
   }
 }

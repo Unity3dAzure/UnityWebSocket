@@ -6,7 +6,7 @@ For Unity developers looking to use Web Sockets in their Unity game / app.
 
 **First download the required dependencies and extract the contents into your Unity project "Assets" folder.**
 
-* [WebSocket-Sharp](https://github.com/deadlyfingers/websocket-sharp)
+* [WebSocket-Sharp (fork with Custom Headers support)](https://github.com/deadlyfingers/websocket-sharp)
 
 ## Developer notes
 

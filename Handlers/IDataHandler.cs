@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnityWebSocket {
+namespace Unity3dAzure.WebSockets {
   public interface IDataHandler {
-    void OnData(byte[] data);
+    void OnData (byte[] rawData, string data, Boolean isBinary);
   }
 }

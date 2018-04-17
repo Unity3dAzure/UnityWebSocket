@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using WebSocketSharp;
@@ -12,9 +12,7 @@ namespace Unity3dAzure.WebSockets {
     [SerializeField]
     private bool AutoConnect = false;
 
-    [Header ("Optional settings")]
-    [SerializeField]
-    private string origin;
+    [Header ("Optional config")]
     [SerializeField]
     private List<UnityKeyValue> headers;
 
@@ -23,11 +21,7 @@ namespace Unity3dAzure.WebSockets {
     void Start () {
       // Config Websocket
       WebSocketUri = webSocketUri;
-      Origin = origin;
       Headers = headers;
-
-      // Validate Server Certificate
-      ValidateServerCertificate ();
 
       if (AutoConnect) {
         Connect ();
@@ -64,14 +58,15 @@ namespace Unity3dAzure.WebSockets {
       Debug.Log ("Web socket is open");
     }
 
-    protected override void OnWebSocketClose (object sender, CloseEventArgs e) {
+    protected override void OnWebSocketClose (object sender, WebSocketCloseEventArgs e) {
       Debug.Log ("Web socket closed with reason: " + e.Reason);
       if (!e.WasClean) {
         DisconnectWebSocket ();
       }
+      DettachHandlers();
     }
 
-    protected override void OnWebSocketMessage (object sender, MessageEventArgs e) {
+    protected override void OnWebSocketMessage (object sender, WebSocketMessageEventArgs e) {
       Debug.LogFormat ("Web socket {1} message:\n{0}", e.Data, e.IsBinary ? "binary" : "string");
       // Raise web socket data handler event
       if (OnData != null) {
@@ -79,7 +74,7 @@ namespace Unity3dAzure.WebSockets {
       }
     }
 
-    protected override void OnWebSocketError (object sender, WebSocketSharp.ErrorEventArgs e) {
+    protected override void OnWebSocketError (object sender, WebSocketErrorEventArgs e) {
       Debug.LogError ("Web socket error: " + e.Message);
       DisconnectWebSocket ();
     }

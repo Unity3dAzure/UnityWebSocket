@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using WebSocketSharp;
 
 namespace Unity3dAzure.WebSockets {
   public sealed class UnityWebSocketScript : UnityWebSocket {

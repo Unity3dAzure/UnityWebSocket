@@ -15,6 +15,7 @@ namespace Unity3dAzure.WebSockets {
     void SendAsync(byte[] data, Action<bool> completed = null);
     void SendAsync(string text, Action<bool> completed = null);
 
+    bool IsConfigured();
     bool IsOpen();
     string Url();
 

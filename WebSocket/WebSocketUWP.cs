@@ -86,6 +86,13 @@ namespace Unity3dAzure.WebSockets {
       }
     }
 
+    public bool IsConfigured() {
+      if (socket == null) {
+        return false;
+      }
+      return true;
+    }
+
     public bool IsOpen() {
       if (socket != null && isOpened) {
         return true;

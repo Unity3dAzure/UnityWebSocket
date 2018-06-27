@@ -15,7 +15,7 @@ using WebSocketSharp;
 namespace Unity3dAzure.WebSockets {
   public class WebSocketMono : IWebSocket {
     private WebSocket socket;
- 
+
     public event OnOpen OnOpen;
     public event OnError OnError;
     public event OnMessage OnMessage;
@@ -39,7 +39,7 @@ namespace Unity3dAzure.WebSockets {
       socket = new WebSocket(url);
 
       // add custom web socket headers
-      if (headers != null || headers.Count > 0) {
+      if (headers != null && headers.Count > 0) {
         socket.CustomHeaders = headers;
       }
     }
@@ -86,7 +86,7 @@ namespace Unity3dAzure.WebSockets {
       socket.SendAsync(text, completed);
     }
 
-#region WebSocket Handlers
+    #region WebSocket Handlers
 
     private void AttachHandlers() {
       if (isAttached) {
@@ -111,7 +111,7 @@ namespace Unity3dAzure.WebSockets {
     }
 
     private void Dispose() {
-      ((IDisposable)socket).Dispose();
+      ((IDisposable) socket).Dispose();
       socket = null;
       isAttached = false;
     }
@@ -143,7 +143,7 @@ namespace Unity3dAzure.WebSockets {
       Dispose();
     }
 
-#endregion
+    #endregion
 
     public bool CheckValidCertificateCallback(System.Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) {
       bool valid = true;
@@ -156,7 +156,7 @@ namespace Unity3dAzure.WebSockets {
             chain.ChainPolicy.RevocationMode = X509RevocationMode.Online;
             chain.ChainPolicy.UrlRetrievalTimeout = new TimeSpan(0, 1, 0);
             chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllFlags;
-            bool chainIsValid = chain.Build((X509Certificate2)certificate);
+            bool chainIsValid = chain.Build((X509Certificate2) certificate);
             if (!chainIsValid) {
               valid = false;
             }
